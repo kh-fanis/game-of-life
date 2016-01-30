@@ -26,13 +26,18 @@ class Grid
   end
 
   def iterate!
-    cells_to_kill, cells_to_revive = [], []
+    cells_to_change_state = []
+
     @cells.flatten.each do |cell|
-      if cell.alive? && cell.living_neighbors < 2 && cell.living_neighbors > 3
-        cells_to_kill.push cell
-      elsif cell.dead? && cell.living_neighbors == 3
-        cells_to_revive.push cell
+      living_neighbors_count = cell.living_neighbors.count
+      if cell.alive? && (living_neighbors_count < 2 || living_neighbors_count > 3)
+        cells_to_change_state.push cell
+      elsif cell.dead? && living_neighbors_count == 3
+        cells_to_change_state.push cell
       end
     end
+
+    cells_to_change_state.each { |cell| cell.change_state! }
+    cells_to_change_state
   end
 end
