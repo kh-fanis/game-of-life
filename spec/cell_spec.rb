@@ -40,6 +40,8 @@ describe Cell do
 
   it 'should return neighbors which are alive' do
     cell_to_test_living_neighbors = grid.cell_at 5, 5
-    expect(grid.cell_at(4, 4).living_neighbors).to [cell_to_test_living_neighbors]
+    cell_to_test_living_neighbors.revive!
+    living_neighbors = grid.cell_at(5, 4).living_neighbors
+    expect(living_neighbors).to eql [cell_to_test_living_neighbors]
   end
 end

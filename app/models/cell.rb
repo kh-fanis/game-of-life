@@ -35,4 +35,8 @@ class Cell
       @grid.cell_at(x + 1, y + 1)
     ]
   end
+
+  def living_neighbors
+    neighbors.select(&:alive?)
+  end
 end
