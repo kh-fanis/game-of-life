@@ -12,4 +12,12 @@ class Cell
   def dead?
     !@state
   end
+
+  def revive!
+    @state = true
+  end
+
+  def kill!
+    @state = false
+  end
 end

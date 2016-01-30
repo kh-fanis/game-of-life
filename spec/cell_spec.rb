@@ -25,10 +25,12 @@ describe Cell do
   end
 
   it 'should revive dead cell' do
-    expect(dead_cell.revive!).to be_alive
+    dead_cell.revive!
+    expect(dead_cell).to be_alive
   end
 
   it 'should kill alive cell' do
-    expect(alive_cell.kill!).to be_dead
+    alive_cell.kill!
+    expect(alive_cell).to be_dead
   end
 end
