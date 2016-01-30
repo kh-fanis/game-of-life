@@ -24,4 +24,24 @@ describe Grid do
     expect(grid.cell_at(0, 0)).to eql cell
     expect(grid.cell_at(5, 1)).to eql another_one_cell
   end
+
+  it 'should correctly out the data' do
+    grid = Grid.new 3, 3
+
+    grid.cell_at(0, 0).revive!
+    grid.cell_at(2, 2).revive!
+
+    expect(grid.to_s).to eql "*  \n   \n  *"
+  end
+
+  it 'should generate next iteration' do
+    grid = Grid.new 5, 5
+    (1...4).each { |i| grid.cell_at(2, i).revive! }
+
+    grid.iterate!
+    expect(grid.to_s).to eql "     \n  *  \n  *  \n  *  \n     "
+
+    grid.iterate!
+    expect(grid.to_s).to eql "     \n     \n *** \n     \n     "
+  end
 end
