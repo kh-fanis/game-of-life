@@ -1,12 +1,17 @@
 require_relative 'spec_helper.rb'
 
 describe Cell do
-  let(grid) { Grid.new }
-  let(dead_cell) { Cell.new grid, 0, 0 }
-  let(alive_cell) { Cell.new grid, 0, 0, true }
+  let(:grid) { Grid.new }
+  let(:dead_cell) { Cell.new grid, 0, 0 }
+  let(:alive_cell) { Cell.new grid, 1, 2, true }
 
   it 'should a part of grid' do
     expect(dead_cell.grid).to be_equal grid
+  end
+
+  it 'should have correct position' do
+    expect(alive_cell.x).to eql 1
+    expect(alive_cell.y).to eql 2
   end
 
   it 'should be alive' do
