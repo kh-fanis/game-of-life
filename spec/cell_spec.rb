@@ -49,4 +49,9 @@ describe Cell do
     expect(dead_cell.to_s).to eql " "
     expect(alive_cell.to_s).to eql "*"
   end
+
+  it 'should change state' do
+    dead_cell.change_state
+    expect(dead_cell).to be_alive
+  end
 end
