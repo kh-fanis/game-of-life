@@ -16,4 +16,12 @@ class Grid
   def cell_at x, y
     @cells[x][y]
   end
+
+  def to_s
+    @cells.map do |arr|
+      arr.map do |cell|
+	cell.to_s
+      end.join
+    end.join "\n"
+  end
 end

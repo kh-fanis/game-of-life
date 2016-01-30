@@ -44,4 +44,9 @@ describe Cell do
     living_neighbors = grid.cell_at(5, 4).living_neighbors
     expect(living_neighbors).to eql [cell_to_test_living_neighbors]
   end
+
+  it 'should have to_s method' do
+    expect(dead_cell.to_s).to eql " "
+    expect(alive_cell.to_s).to eql "*"
+  end
 end

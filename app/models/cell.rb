@@ -39,4 +39,12 @@ class Cell
   def living_neighbors
     neighbors.select(&:alive?)
   end
+
+  def to_s
+    if alive?
+      "*"
+    else
+      " "
+    end
+  end
 end
