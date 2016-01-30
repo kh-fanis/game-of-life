@@ -21,6 +21,10 @@ class Cell
     @state = false
   end
 
+  def change_state!
+    @state = !@state
+  end
+
   def neighbors
     [
       @grid.cell_at(x - 1, y - 1),
