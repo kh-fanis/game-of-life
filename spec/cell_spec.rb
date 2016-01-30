@@ -36,19 +36,15 @@ describe Cell do
 
   context 'testing real example' do
     before(:all) do
-      grid = Grid.new
-      grid.cells = []
-      5.times do |col|
-        grid.cells.push []
-        5.times do |row|
-          grid.cells[col].push Cell.new(self, col, row)
-        end
-      end
+      grid = Grid.new 5, 5
       (1...4).each { |i| grid.cells[2][i].revive! }
     end
 
-    it 'should return neighbors of the cell' do
-      expect(grid.cell_at(0, 0).neighbors.map { |cell| [cell.x, cell.y] }).to eql [[4, 4], [0, 4], [1, 4], [4, 0], [1, 0], [4, 1], [0, 1], [1, 1]]
-    end
+
   end
+
+
+    it 'should return neighbors of the cell' do
+      expect(grid.cell_at(0, 0).neighbors.map { |cell| [cell.x, cell.y] }).to eql [[7, 7], [7, 0], [7, 1], [0, 7], [0, 1], [1, 7], [1, 0], [1, 1]]
+    end
 end

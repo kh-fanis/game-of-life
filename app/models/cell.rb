@@ -20,4 +20,19 @@ class Cell
   def kill!
     @state = false
   end
+
+  def neighbors
+    [
+      @grid.cell_at(x - 1, y - 1),
+      @grid.cell_at(x - 1, y),
+      @grid.cell_at(x - 1, y + 1),
+
+      @grid.cell_at(x, y - 1),
+      @grid.cell_at(x, y + 1),
+
+      @grid.cell_at(x + 1, y - 1),
+      @grid.cell_at(x + 1, y),
+      @grid.cell_at(x + 1, y + 1)
+    ]
+  end
 end
