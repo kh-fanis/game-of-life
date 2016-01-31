@@ -11,15 +11,7 @@ To start you need Ruby installed on your system!
 Open folder where game locates and write 'ruby run.rb', which is gonna launch game.
 After it's awaiting for the game file. There are several examples in examples folder. To test the game use examples. Just type 'examples/example_one.txt' or 'examples/example_two.txt' or 'examples/example_three.txt' or You can create yourself.
 
-Dead cells should be empty ' ' and alive cells to be star '*'. For example we have the file of the game like:
-
--------
-|     |
-| \*\*\* |
-|     |
--------
-
-|, - don't need to type them too
+Dead cells should be empty ' ' and alive cells to be star '*'.
 
 To test application, there are tests in spec folder, to test them first of all write 'bundle install' on the folder of the game, which goes to install last version of Rspec and type 'rspec spec' to see results.
 
