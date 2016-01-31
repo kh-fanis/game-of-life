@@ -2,9 +2,11 @@ require_relative 'models/grid.rb'
 
 module FileToGrid
   def self.convert file_name
+    string_matrix = nil
     File.open "#{File.dirname(__FILE__)}/../#{file_name}" do |file|
-      puts file.read
+      string_matrix = file.read
     end
+    string_to_grid string_matrix
   end
 
   def self.string_to_grid matrix
