@@ -1,2 +1,0 @@
-
-w</h5> fds g <h5>Time.now</h5>".gsub(/<h5>[^<]+<\/h5>/){ |code| eval /<h5>(.*)<\/h5>/.match(code)[1]}

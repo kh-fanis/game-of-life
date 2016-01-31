@@ -11,7 +11,7 @@ module FileToGrid
 
   def self.string_to_grid matrix
     width, height = position_of matrix
-    grid = Grid.new width, height
+    grid = Grid.new height, width
     matrix.split("\n").map do |str|
       str.split("")
     end.each_with_index do |arr, x|

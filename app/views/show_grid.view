@@ -2,3 +2,5 @@ Hello, to generate iteration press Enter!
 Generatioin: <%= data[:generation_number] %>
 
 <%= data[:grid].to_s %>
+
+To exit write 'exit' and return
