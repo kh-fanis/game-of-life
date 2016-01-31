@@ -8,6 +8,6 @@ describe View do
   end
 
   it 'should correctly parse code inside <%= code %>' do
-    expect(view.parse).to eql "hello world. Now #{ Time.now.hour }:#{Time.now.min}"
+    expect(view.parse).to eql "hello world. Now #{ Time.now.hour }:#{Time.now.min}\n"
   end
 end
