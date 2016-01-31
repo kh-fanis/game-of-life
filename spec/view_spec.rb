@@ -2,7 +2,7 @@ require_relative 'spec_helper.rb'
 
 describe View do
   let(:view) { View.new :view_test_file }
-  let(:view_with_data) { View.new :for_test_with_data }
+  let(:view_with_data) { View.new :for_test_with_data, some_variable: 'this is from variable', another_one_variable: 'this from variable too' }
 
   it 'should open view file' do
     expect(view.template).to eql "hello world. Now <%= Time.now.hour %>:<%= Time.now.min %>\n"
@@ -19,6 +19,6 @@ describe View do
 
   it 'should render text with data' do
     view_with_data
-    expect { view_with_data.render some_variable: 'this is from variable', another_one_variable: 'this from variable too' }.to output('This should correctly output the data\nthis is from variable\nthis from variable too\n')
+    expect { view_with_data.render }.to output("This should correctly output the data\n\nthis from variable too\n").to_stdout
   end
 end

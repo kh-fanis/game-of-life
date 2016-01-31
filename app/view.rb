@@ -1,8 +1,8 @@
 class View
-  attr_reader :template, :action
+  attr_reader :template, :action, :data
 
-  def initialize action_file
-    @action = action_file
+  def initialize action_file, data = {}
+    @action, @data = action_file, data
     File.open("#{File.dirname(__FILE__)}/views/#{@action}.view", 'r') { |file| puts @template = file.read }
     parse
   end
