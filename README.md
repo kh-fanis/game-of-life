@@ -13,9 +13,13 @@ After it's awaiting for the game file. There are several examples in examples fo
 
 Dead cells should be empty ' ' and alive cells to be star '*'. For example we have the file of the game like:
 
-     
- \*\*\* 
-     
+-------
+|     |
+| \*\*\* |
+|     |
+-------
+
+|, - don't need to type them too
 
 To test application, there are tests in spec folder, to test them first of all write 'bundle install' on the folder of the game, which goes to install last version of Rspec and type 'rspec spec' to see results.
 
