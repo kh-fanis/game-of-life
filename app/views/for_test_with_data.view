@@ -1,0 +1,3 @@
+This should correctly output the data
+<%= data[:some_varible] %>
+<%= data[:another_one_variable] %>
