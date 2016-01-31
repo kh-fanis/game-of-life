@@ -10,4 +10,8 @@ describe View do
   it 'should correctly parse code inside <%= code %>' do
     expect(view.parse).to eql "hello world. Now #{ Time.now.hour }:#{Time.now.min}\n"
   end
+
+  it 'should render text out to screen' do
+    expect { view.render }.to output('hello world. Now #{ Time.now.hour }:#{ Time.now.min }\n').to_stdout
+  end
 end
