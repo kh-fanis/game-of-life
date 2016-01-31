@@ -11,6 +11,6 @@ describe FileToGrid do
   end
 
   it 'should return postion of matrix' do
-    expect(FileToGrid.postion_of "     \n     \n *** \n     \n     ").to eql [5, 5]
+    expect(FileToGrid.position_of "     \n     \n *** \n     \n     ").to eql [5, 5]
   end
 end

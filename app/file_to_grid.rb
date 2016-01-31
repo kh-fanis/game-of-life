@@ -10,7 +10,7 @@ module FileToGrid
   end
 
   def self.string_to_grid matrix
-    width, height = matrix.split("\n")[0].length, matrix.split("\n").length
+    width, height = position_of matrix
     grid = Grid.new width, height
     matrix.split("\n").map do |str|
       str.split("")
@@ -20,5 +20,9 @@ module FileToGrid
       end
     end
     grid
+  end
+
+  def self.position_of matrix
+    [matrix.split("\n")[0].length, matrix.split("\n").length]
   end
 end
