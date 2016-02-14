@@ -1,0 +1,2 @@
+class GenerationDied < RuntimeError
+end

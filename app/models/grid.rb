@@ -24,9 +24,7 @@ class Grid
 
   def to_s
     @cells.map do |arr|
-      arr.map do |cell|
-        cell.to_s
-      end.join
+      arr.map(&:to_s).join
     end.join "\n"
   end
 
@@ -48,7 +46,7 @@ class Grid
     self
   end
 
-  def to_md5
-    Digest::MD5.hexdigest(cells.flatten.map { |cell| cell.alive? ? 1 : 0 }.to_s)
+  def all_dead?
+    @cells.flatten.select { |cell| cell.alive? }.size == 0
   end
 end

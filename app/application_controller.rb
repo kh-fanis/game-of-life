@@ -1,5 +1,7 @@
 require_relative 'file_to_grid.rb'
 require_relative 'view.rb'
+require_relative 'generation_died.rb'
+require_relative 'game_engine.rb'
 
 class ApplicationController
   def initialize
@@ -9,16 +11,15 @@ class ApplicationController
     render :welcome
     file_name = gets[0...-1]
 
-    grid = FileToGrid.convert(file_name)
-    generation = 0
+    game_engine = GameEngine.new(file_name)
+    render :show_grid, game_engine.data_to_render
 
     while true
-      render :show_grid, grid: grid, generation_number: generation
-      grid.iterate!
-      generation = generation + 1
+      render :show_grid, game_engine.next!
       sleep 1
     end
 
+  rescue GenerationDied
     render :exit
   end
 
