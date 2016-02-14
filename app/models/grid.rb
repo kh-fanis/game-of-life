@@ -44,6 +44,8 @@ class Grid
     end
 
     cells_to_change_state.each { |cell| cell.change_state! }
+
+    self
   end
 
   def to_md5

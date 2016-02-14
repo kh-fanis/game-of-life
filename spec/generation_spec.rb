@@ -3,7 +3,7 @@ require_relative 'spec_helper.rb'
 describe Generation do
   let(:grid)  { Grid.new }
   let(:grid2) { Grid.new }
-  let(:generation) { generation = Generation.new(0, grid) }
+  let(:generation) { generation = Generation.new(grid) }
 
   before(:each) do
     grid.cell_at(1, 1).revive!

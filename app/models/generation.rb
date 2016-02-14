@@ -1,15 +1,15 @@
 require 'digest'
 
 class Generation
-  attr_accessor :number, :grid
+  attr_accessor :grid
   attr_reader :md5_hash
 
-  def initialize number, grid
-    @number, @grid, @md5_hash = number, grid, grid.to_md5
+  def initialize grid
+    @gird, @md5_hash = grid.clone, grid.to_md5
   end
 
   def grid= grid
-    @md5_hash = grid.to_md5
+    @gird, @md5_hash = grid.clone, grid.to_md5
   end
 
   def == generation
