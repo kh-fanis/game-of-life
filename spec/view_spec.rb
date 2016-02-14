@@ -9,16 +9,14 @@ describe View do
   end
 
   it 'should correctly parse code inside <%= code %>' do
-    expect(view.parse).to eql "hello world. Now #{ Time.now.hour }:#{Time.now.min}\n"
+    expect(view.parsed_template).to eql "hello world. Now #{ Time.now.hour }:#{Time.now.min}\n"
   end
 
   it 'should render text out to screen' do
-    view
     expect { view.render }.to output("hello world. Now #{ Time.now.hour }:#{ Time.now.min }\n").to_stdout
   end
 
   it 'should render text with data' do
-    view_with_data
     expect { view_with_data.render }.to output("This should correctly output the data\n\nthis from variable too\n").to_stdout
   end
 end

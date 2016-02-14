@@ -44,4 +44,15 @@ describe Grid do
     grid.iterate!
     expect(grid.to_s).to eql "     \n     \n *** \n     \n     "
   end
+
+  context 'md5_hash' do
+    before(:each) do
+      grid = Grid.new 5, 5
+      (1...4).each { |i| grid.cell_at(2, i).revive! }
+    end
+
+    it 'should return md5_hash' do
+      expect(grid.to_md5).to eql '6a7acdfe081744f130fa67594b385e5c'
+    end
+  end
 end

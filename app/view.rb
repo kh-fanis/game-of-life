@@ -1,19 +1,24 @@
+require 'erb'
+require 'ostruct'
+
 class View
   attr_reader :template, :action, :data
 
   def initialize action_file, data = {}
     @action, @data = action_file, data
-    File.open("#{File.dirname(__FILE__)}/views/#{@action}.view", 'r') { |file| puts @template = file.read }
-    parse
+
+    @template = File.open("#{File.dirname(__FILE__)}/views/#{@action}.view", 'r').read
+
+    @erb = ERB.new(template)
   end
 
-  def parse
-    @parsed_text = template.gsub(/<%=\s*[^<]+\s*%>/){ |code| eval /<%=\s*(.*)\s*%>/.match(code)[1]}
+  def parsed_template
+    @erb.result(OpenStruct.new(@data).instance_eval { binding })
   end
 
   def render
     clear_screen
-    print @parsed_text.gsub(/<h5>[^<]+<\/h5>/){ |code| eval /<h5>(.*)<\/h5>/.match(code)[1]}
+    puts parsed_template
   end
 
   def clear_screen

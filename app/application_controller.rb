@@ -3,17 +3,20 @@ require_relative 'view.rb'
 
 class ApplicationController
   def initialize
+  end
+
+  def run
     render :welcome
     file_name = gets[0...-1]
 
-    grid = FileToGrid.convert file_name
+    grid = FileToGrid.convert(file_name)
     generation = 0
 
     while true
       render :show_grid, grid: grid, generation_number: generation
       grid.iterate!
       generation = generation + 1
-      gets.downcase == "exit\n" ? break : nil
+      sleep 1
     end
 
     render :exit
@@ -22,7 +25,7 @@ class ApplicationController
 private
 
   def render name, data = {}
-    view = View.new name, data
+    view = View.new(name, data)
     view.render
   end
 end

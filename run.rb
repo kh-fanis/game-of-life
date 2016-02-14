@@ -1,3 +1,4 @@
 require_relative 'app/application_controller.rb'
 
-ApplicationController.new
+app = ApplicationController.new
+app.run

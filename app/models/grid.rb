@@ -1,10 +1,15 @@
+require 'digest'
 require_relative 'cell.rb'
 
 class Grid
   attr_accessor :cells
 
-  def initialize columns = 8, rows = 8
+  @@DEFAULT_COLUMS = 8
+  @@DEFAULT_ROWS   = 8
+
+  def initialize columns = @@DEFAULT_COLUMS, rows = @@DEFAULT_ROWS
     @cells = []
+
     (0...columns).each do |x|
       @cells.push []
       (0...rows).each do |y|
@@ -20,7 +25,7 @@ class Grid
   def to_s
     @cells.map do |arr|
       arr.map do |cell|
-	cell.to_s
+        cell.to_s
       end.join
     end.join "\n"
   end
@@ -30,6 +35,7 @@ class Grid
 
     @cells.flatten.each do |cell|
       living_neighbors_count = cell.living_neighbors.count
+
       if cell.alive? && (living_neighbors_count < 2 || living_neighbors_count > 3)
         cells_to_change_state.push cell
       elsif cell.dead? && living_neighbors_count == 3
@@ -38,6 +44,9 @@ class Grid
     end
 
     cells_to_change_state.each { |cell| cell.change_state! }
-    cells_to_change_state
+  end
+
+  def to_md5
+    Digest::MD5.hexdigest(cells.flatten.map { |cell| cell.alive? ? 1 : 0 }.to_s)
   end
 end
