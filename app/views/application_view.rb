@@ -5,9 +5,7 @@ class ApplicationView < View
   @@DEFAULT_REPLACEMENT_FOR_DEAD_CELL  = ' '
 
   def render
-    puts @data
     @data = @data.map { |k, object| [k, self.class.object_to_s(object)] }.to_h
-    puts @data
 
     super
   end

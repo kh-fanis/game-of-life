@@ -23,19 +23,19 @@ class Grid
   end
 
   def iterate!
-    cells_to_change_state = []
+    cells_to_toggle = []
 
     @cells.flatten.each do |cell|
       living_neighbors_count = cell.living_neighbors.count
 
       if cell.alive? && (living_neighbors_count < 2 || living_neighbors_count > 3)
-        cells_to_change_state.push cell
+        cells_to_toggle.push cell
       elsif cell.dead? && living_neighbors_count == 3
-        cells_to_change_state.push cell
+        cells_to_toggle.push cell
       end
     end
 
-    cells_to_change_state.each { |cell| cell.change_state! }
+    cells_to_toggle.each { |cell| cell.toggle! }
 
     self
   end

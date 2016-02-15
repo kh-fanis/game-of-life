@@ -46,7 +46,7 @@ describe Cell do
   end
 
   it 'should change state' do
-    dead_cell.change_state!
+    dead_cell.toggle!
     expect(dead_cell).to be_alive
   end
 end

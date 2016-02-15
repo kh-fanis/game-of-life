@@ -2,7 +2,7 @@ require_relative 'spec_helper.rb'
 
 describe GenerationLog do
   let(:generation_log) { GenerationLog.new }
-  let(:grid) { Grid.new 5, 5 }
+  let(:grid) { Grid.new(5, 5) }
 
   before do
     1.upto(3) { |i| grid.cell_at(2, i).revive! }

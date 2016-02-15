@@ -21,7 +21,7 @@ class Cell
     @state = false
   end
 
-  def change_state!
+  def toggle!
     @state = !@state
   end
 
