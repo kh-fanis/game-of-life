@@ -22,4 +22,5 @@ To test application, there are tests in spec folder, to test them first of all w
 # Versionos:
 
 Ruby version 2.2.4
+
 Last version of RSpec
