@@ -13,7 +13,7 @@ class GameEngine
   end
 
   def next!
-    unless @generation_log.add(Generation.new(grid.iterate!))
+    if !@generation_log.add(Generation.new(grid.iterate!)) or grid.all_dead?
       raise GenerationDied
     end
 
@@ -21,6 +21,6 @@ class GameEngine
   end
 
   def data_to_render
-    { grid: @grid, generation_number: @generation_log.last_number }
+    { grid: @grid, generation_number: @generation_log }
   end
 end

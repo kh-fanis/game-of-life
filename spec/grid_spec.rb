@@ -25,24 +25,35 @@ describe Grid do
     expect(grid.cell_at(5, 1)).to eql another_one_cell
   end
 
-  it 'should correctly out the data' do
-    grid = Grid.new 3, 3
-
-    grid.cell_at(0, 0).revive!
-    grid.cell_at(2, 2).revive!
-
-    expect(grid.to_s).to eql "*  \n   \n  *"
-  end
-
   it 'should generate next iteration' do
-    grid = Grid.new 5, 5
+    grid = Grid.new(5, 5)
     (1...4).each { |i| grid.cell_at(2, i).revive! }
 
+    # first iteration
     grid.iterate!
-    expect(grid.to_s).to eql "     \n  *  \n  *  \n  *  \n     "
 
+    0.upto(4) do |col|
+      [0, 1, 3, 4].each do |row|
+        expect(grid.cell_at(col, row)).to be_dead
+      end
+    end
+
+    [0, 4].each { |col| expect(grid.cell_at(col, 2)).to be_dead }
+
+    1.upto(3) { |n| expect(grid.cell_at(n, 2)).to be_alive }
+
+    # second iteration
     grid.iterate!
-    expect(grid.to_s).to eql "     \n     \n *** \n     \n     "
+
+    [0, 1, 3, 4].each do |col|
+      0.upto(4) do |row|
+        expect(grid.cell_at(col, row)).to be_dead
+      end
+    end
+
+    [0, 4].each { |row| expect(grid.cell_at(2, row)).to be_dead }
+
+    1.upto(3) { |n| expect(grid.cell_at(2, n)).to be_alive }
   end
 
   it 'should have no alive cells' do

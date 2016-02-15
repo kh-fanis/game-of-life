@@ -45,11 +45,6 @@ describe Cell do
     expect(living_neighbors).to eql [cell_to_test_living_neighbors]
   end
 
-  it 'should have to_s method' do
-    expect(dead_cell.to_s).to eql " "
-    expect(alive_cell.to_s).to eql "*"
-  end
-
   it 'should change state' do
     dead_cell.change_state!
     expect(dead_cell).to be_alive

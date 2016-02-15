@@ -22,12 +22,6 @@ class Grid
     @cells[x][y]
   end
 
-  def to_s
-    @cells.map do |arr|
-      arr.map(&:to_s).join
-    end.join "\n"
-  end
-
   def iterate!
     cells_to_change_state = []
 

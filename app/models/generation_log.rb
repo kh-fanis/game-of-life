@@ -16,6 +16,6 @@ class GenerationLog
   end
 
   def last_number
-    @generations.size
+    @generations.size + 1
   end
 end
